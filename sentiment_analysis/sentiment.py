@@ -11,26 +11,26 @@ def measure_sentiment(list_of_tweets):
         sent = sentence.string
         if sent.__contains__("Donald" or "donald" or "Trump" or "trump"):
             trump_sentences.append(sentence)
-        elif sent.__contains__("Hillary" or "hillary" or "Clinton" or "clinton"):
+        if sent.__contains__("Hillary" or "hillary" or "Clinton" or "clinton"):
             hillary_sentences.append(sentence)
 
     trump_pol = 0
     trump_pol_list = []
     for sentence in trump_sentences:
-        print(sentence.string)
-        print(sentence.sentiment)
+        # print(sentence.string)
+        # print(sentence.sentiment)
         if sentence.sentiment.polarity != 0:
             trump_pol += sentence.sentiment.polarity
             trump_pol_list.append(sentence.sentiment.polarity)
 
-    print('*************************')
-    print('*************************')
+    # print('*************************')
+    # print('*************************')
 
     hill_pol = 0
     hill_pol_list = []
     for sentence in hillary_sentences:
-        print(sentence.string)
-        print(sentence.sentiment)
+        # print(sentence.string)
+        # print(sentence.sentiment)
         if sentence.sentiment.polarity != 0:
             hill_pol += sentence.sentiment.polarity
             hill_pol_list.append(sentence.sentiment.polarity)
@@ -44,8 +44,8 @@ def measure_sentiment(list_of_tweets):
     except:
         h_sentiment = "NOT ENOUGH DATA"
 
-    print("Trump sentiment: " + str(t_sentiment))
-    print("Clinton sentiment: " + str(h_sentiment))
+    # print("Trump sentiment: " + str(t_sentiment))
+    # print("Clinton sentiment: " + str(h_sentiment))
 
     return {'hillary_sentiment': h_sentiment, 'trump_sentiment':t_sentiment, 'trump_list': trump_pol_list, 'hillary_list':hill_pol_list}
 

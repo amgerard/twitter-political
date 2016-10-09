@@ -1,5 +1,5 @@
 
-def get_user_tweets(username, collection_rounds = 5):
+def get_user_tweets(username, collection_rounds = 3):
     import tweepy
     from user_crawler import secrets
 

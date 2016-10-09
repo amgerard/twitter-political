@@ -1,5 +1,6 @@
 from textblob import TextBlob
 from datetime import datetime
+import time
 import matplotlib.pyplot as plt
 
 def measure_sentiment(list_of_tweets):
@@ -52,7 +53,7 @@ def measure_sentiment(list_of_tweets):
     return {'hillary_sentiment': h_sentiment, 'trump_sentiment':t_sentiment, 'trump_list': trump_pol_list, 'hillary_list':hill_pol_list}
 
 
-def measure_sentiment_over_time(tweetObjs):
+def measure_sentiment_over_time(tweetObjs,twitterHandle=''):
     
     list_of_tweets = []
     list_of_times = []
@@ -127,18 +128,29 @@ def measure_sentiment_over_time(tweetObjs):
 
     # ------------------------------------------
     # Do the plotting
+                
+    t_trump = [(max(times_trump)-t).total_seconds()/-60/60 for t in times_trump]
+    t_hill  = [(max(times_hill) -t).total_seconds()/-60/60 for t in times_hill]
+
+    # line_up, = plt.plot([1, 2, 3], label='Line 2')
+    # line_down, = plt.plot([3, 2, 1], label='Line 1')
+    # plt.legend(handles=[line_up, line_down])
+
     
-    t_trump = [(t - min(times_trump)).total_seconds()/60/60 for t in times_trump]
-    t_hill  = [(t - min(times_hill )).total_seconds()/60/60 for t in times_hill]
-    plt.plot(t_trump,trump_pol_list,'ro-')
-    plt.plot(t_hill,hill_pol_list,'bo-')
-    plt.xlabel('Hours since first tweet')
+    t_label = twitterHandle.split()[1] + "'s sentiment towards Trump"
+    h_label = twitterHandle.split()[1] + "'s sentiment towards Clinton"
+    line_trump, = plt.plot(t_trump,trump_pol_list,'ro-',label=t_label)
+    line_hill,  = plt.plot(t_hill,hill_pol_list,'bo-',label=h_label)
+    plt.xlabel('Hours preceding most recent tweet')
     plt.ylabel('Polarity list')
     plt.ylim([-1.5, 1.5])
+    plt.xlim([min([min(t_hill),min(t_trump)]),30])
+    plt.title(twitterHandle)
+    plt.legend(handles=[line_trump,line_hill])
     plt.show()
     
 
     return {'hillary_sentiment': h_sentiment, 'trump_sentiment': t_sentiment, 'trump_list': trump_pol_list,
-            'hillary_list': hill_pol_list, 'hillary_times': times_hill, 'trump_times': times_trump,
+            'hillary_list': hill_pol_list, 'hillary_times': t_hill, 'trump_times': t_trump,
             'trump_tweets':tweets_trump,'hillary_tweets':tweets_hill}
     

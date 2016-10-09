@@ -1,0 +1,22 @@
+{% extends "header.html" %}
+{% block body %}
+    <div class="row">
+    {% if error %}<p class="error"><strong>Error:</strong>{{ error }}{% endif %}</p>
+    </div>
+
+    <div class="row">
+
+            <div class="user-submit">
+                <form action="{{ url_for('submit') }}" method="POST">
+                <div class="form-group">
+                    <label for="twitter_name">Enter Twitter ID:</label>
+                    <input class="form-control" type="text" id="twitter_name" name="twitter_name">
+                </div>
+                <button class="btn btn-default">Analyze!</button>
+            </form>
+            </div>
+    </div>
+
+
+
+{% endblock %}

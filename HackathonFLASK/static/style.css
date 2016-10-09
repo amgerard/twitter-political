@@ -1,0 +1,41 @@
+.user-submit{
+    width: 500px;
+    background-color: lightgray;
+    padding: 20px;
+    border: solid black 2px;
+    margin: auto;
+}
+
+.sentiment{
+    text-align: center;
+    font-size: 25px;
+    margin-top: 7px;
+}
+
+h2{
+    text-align: center;
+
+}
+
+h1{
+    text-align: center;
+}
+
+.header-row{
+    background-color: royalblue;
+    color:white;
+    padding-bottom: 10px;
+}
+
+.section-row{
+    color: white;
+    background-color: cornflowerblue;
+}
+.btn{
+    min-height: 44px;
+    min-width: 44px;
+}
+
+.center-row{
+    text-align: center;
+}

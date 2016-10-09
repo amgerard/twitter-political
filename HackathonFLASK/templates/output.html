@@ -1,0 +1,39 @@
+{% extends "header.html" %}
+{% block body %}
+    <div class="row header-row">
+        <div class="col-md-12">
+            <h1>Tweets from @{{ username }}</h1>
+        </div>
+    </div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row section-row">
+            <h2>Sentiment towards Hillary Clinton</h2>
+        </div>
+        <div class="sentiment">
+            {{ hillary_sentiment }}
+        </div>
+        <img class="img-responsive" src="static/temp/{{ h_plotPng }}" alt="No Data">
+    </div>
+    <div class="col-md-6">
+        <div class="row section-row">
+            <h2>Sentiment towards Donald Trump</h2>
+
+        </div>
+        <div class="sentiment">
+            {{ trump_sentiment }}
+        </div>
+        <img class="img-responsive" src="static/temp/{{ t_plotPng }}" alt="No Data">
+    </div>
+</div>
+    <div class="row">
+    <img class="img-responsive center-block" src="static/temp/{{ lineplot }}" alt="No Data">
+    </div>
+
+    <div class="row">
+    <form class="center-row" action="/">
+        <button class="btn btn-primary">Search Someone Else!</button>
+    </form>
+    </div>
+
+{% endblock %}

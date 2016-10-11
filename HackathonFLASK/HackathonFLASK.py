@@ -41,7 +41,7 @@ def submit():
 
     # sentiment over time
     tweets = get_tweets_with_time(username)
-    lineplot = measure_sentiment_over_time(tweets, twitterHandle=username)
+    lineplot = measure_sentiment_over_time(tweets, twitterHandle=username, dir_name)
     del tweets
 
     return render_template('output.html', username=username, hillary_sentiment = h_sent, trump_sentiment = t_sent,

@@ -5,9 +5,12 @@ import tempfile
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import os
 
 
-def generate_heatmap(list_of_values, value_name):
+
+
+def generate_heatmap(list_of_values, value_name, output_dir):
 
     if len(list_of_values) == 0:
         return None
@@ -22,7 +25,7 @@ def generate_heatmap(list_of_values, value_name):
     plt.tick_params(axis='x', which='both', bottom='off',top='off', labelbottom='off')
 
     f = tempfile.NamedTemporaryFile(
-        dir='static/temp',
+        dir=output_dir,
         suffix='.png', delete=False
     )
     plt.savefig(f)

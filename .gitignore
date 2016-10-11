@@ -42,3 +42,6 @@ fabric.properties
 
 # file for secret keys
 secrets.py
+
+# archives
+*.zip

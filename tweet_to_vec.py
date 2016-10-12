@@ -111,7 +111,7 @@ z = X[:,2]
 #plt.plot(x[32952:],y[32952:], marker='o', color='r', markersize=3)
 
 ax.scatter(x[:1000],y[:1000],z[:1000], marker='o', color='b')
-ax.scatter(x[32952:33952],y[32952:33952],z[:1000], marker='o', color='r')
+ax.scatter(x[32952:33952],y[32952:33952],z[32952:33952], marker='o', color='r')
 
 #ax.scatter(x, y, c='r', marker='o')
 #ax.set_xlabel('X Label')

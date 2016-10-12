@@ -56,7 +56,7 @@ def measure_sentiment(list_of_tweets):
     return {'hillary_sentiment': h_sentiment, 'trump_sentiment':t_sentiment, 'trump_list': trump_pol_list, 'hillary_list':hill_pol_list}
 
 
-def measure_sentiment_over_time(tweetObjs, twitterHandle=''):
+def measure_sentiment_over_time(tweetObjs, output_dir, twitterHandle=''):
     list_of_tweets = []
     list_of_times = []
     for n in range(0, len(tweetObjs)):
@@ -151,7 +151,7 @@ def measure_sentiment_over_time(tweetObjs, twitterHandle=''):
     plt.legend(handles=[line_trump, line_hill])
 
     f = tempfile.NamedTemporaryFile(
-        dir='static/temp',
+        dir=output_dir,
         suffix='.png', delete=False
     )
     plt.savefig(f)

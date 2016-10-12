@@ -4,6 +4,7 @@ from sentiment_analysis.sentiment import measure_sentiment, measure_sentiment_ov
 from sentiment_analysis.plotting import generate_heatmap
 import time
 from Tweet import Tweet
+import os
 
 import tempfile
 import matplotlib
@@ -11,6 +12,8 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 app = Flask(__name__)
+
+dir_name = os.path.dirname(os.path.realpath(__file__)) + '/static/temp'
 
 
 @app.route('/')
@@ -29,16 +32,16 @@ def submit():
     h_sent = results['hillary_sentiment']
 
     ## GENERATE PLOT HERE AND RETURN IT IN A NEW TEMPLATE
-    h_plotPng = generate_heatmap(results['hillary_list'], "Hillary Sentiment")
+    h_plotPng = generate_heatmap(results['hillary_list'], "Hillary Sentiment", dir_name)
     time.sleep(0.5)
-    t_plotPng = generate_heatmap(results['trump_list'], "Trump Sentiment")
+    t_plotPng = generate_heatmap(results['trump_list'], "Trump Sentiment", dir_name)
 
     del(results)
     del(tweets)
 
     # sentiment over time
     tweets = get_tweets_with_time(username)
-    lineplot = measure_sentiment_over_time(tweets, twitterHandle=username)
+    lineplot = measure_sentiment_over_time(tweets, dir_name, twitterHandle=username)
     del tweets
 
     return render_template('output.html', username=username, hillary_sentiment = h_sent, trump_sentiment = t_sent,

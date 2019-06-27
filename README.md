@@ -10,7 +10,10 @@ The project is no longer hosted anywhere, but when it was, it was a sight to be 
 We were also able to pull location data from geo-enabled Tweets. Here's where the Tweets were coming from during the third presidential debate of 2016.
 ![Debate](/assets/3rdDebate_America.png)
 
+
 ## Usage
 Within the HackathonFLASK folder execute ```python HackathonFLASK.py``` to run the server in development mode.
 
-Dont forget to include your own twitter API keys!
+
+Dont forget to include your own twitter API keys in the ```HackathonFLASK/user_crawler/get_user_tweets.py``` file
+
